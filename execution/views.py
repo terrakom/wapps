@@ -54,7 +54,7 @@ class Execution(object):
         """
         self.nav = Navigator()
         self.config_data = read_config_file_data()
-        self.katana_dir = os.path.dirname(katana.native.__path__[0])
+        self.katana_dir = self.nav.get_katana_dir()
         self.wf_dir = os.path.dirname(self.katana_dir)
         self.warrior = os.path.join(self.wf_dir, 'warrior', 'Warrior')
         if os.environ["pipmode"]=='True':
