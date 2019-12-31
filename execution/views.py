@@ -24,7 +24,7 @@ from django.http import StreamingHttpResponse, JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 
-import katana.native
+import native
 from katana.native.settings.settings import Settings
 from katana.utils.navigator_util import Navigator
 from katana.utils import file_utils
@@ -54,7 +54,7 @@ class Execution(object):
         """
         self.nav = Navigator()
         self.config_data = read_config_file_data()
-        self.katana_dir = self.nav.get_katana_dir()
+        self.katana_dir = os.path.dirname(native.__path__[0])
         self.wf_dir = os.path.dirname(self.katana_dir)
         self.warrior = os.path.join(self.wf_dir, 'warrior', 'Warrior')
         if os.environ["pipmode"]=='True':
